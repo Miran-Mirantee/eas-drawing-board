@@ -1,11 +1,3 @@
-const canvas = document.createElement('div');
-canvas.classList.add('canvas');
-document.body.appendChild(canvas);
-
-const container = document.createElement('div');
-container.classList.add('container');
-canvas.appendChild(container);
-
 function createGrid(grid) {
     for (let i = 0; i < grid; i++) {
         const row = document.createElement('div');
@@ -22,13 +14,30 @@ function createGrid(grid) {
     }
 }
 
-let grid = 16;
-createGrid(grid);
+function deleteGrid(grid) {
+    for (let i = 0; i < grid; i++) {
+        const row = document.querySelector('.row');
+        container.removeChild(row);
+    }
+}
 
+const canvas = document.createElement('div');
+canvas.classList.add('canvas');
+document.body.appendChild(canvas);
+
+const container = document.createElement('div');
+container.classList.add('container');
+canvas.appendChild(container);
+
+let grid = 16;
+let temp;
+createGrid(grid);
 
 const btn = document.querySelector('.btn');
 btn.addEventListener('click', () => {
+    temp = grid;
     grid = prompt(`Enter a number of square per row:`);
+    deleteGrid(temp);
     createGrid(grid);
     console.log(grid);
 });
