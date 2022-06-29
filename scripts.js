@@ -34,17 +34,15 @@ container.classList.add('container');
 canvas.appendChild(container);
 
 let grid = 16;
-let temp;
 createGrid(grid);
 
 const btn = document.querySelector('.btn');
 btn.addEventListener('click', () => {
-    temp = grid;
+    let temp = grid;
     grid = prompt(`Enter a number of square per row:`);
     if (grid <= 100) {
         deleteGrid(temp);
         createGrid(grid);
-        console.log(grid);
     }
     else
         grid = temp;
