@@ -26,11 +26,7 @@ body {
     flex-shrink: 0;
 }
 
-.pixel:hover {
-    background-color: black;
-}
-
-.clicked {
+.hover {
     background-color: black;
 }
 

@@ -9,8 +9,8 @@ function createGrid(grid) {
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
             pixel.setAttribute('style', `height: ${dimensions}px; width: ${dimensions}px;`);
-            pixel.addEventListener('click', () => {
-                pixel.classList.add('clicked');
+            pixel.addEventListener('mouseover', () => {
+                pixel.classList.add('hover');
             });
             row.appendChild(pixel);
         }
