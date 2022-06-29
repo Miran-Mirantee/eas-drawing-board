@@ -30,6 +30,10 @@ body {
     background-color: black;
 }
 
+.clicked {
+    background-color: black;
+}
+
 .btn {
     font-size: 16px;
 }

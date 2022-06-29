@@ -1,12 +1,16 @@
 function createGrid(grid) {
+    const style = getComputedStyle(container);
+    let height = parseInt(style.height);
+    let dimensions = height / grid - 2;
     for (let i = 0; i < grid; i++) {
         const row = document.createElement('div');
         row.classList.add('row');
         for (let j = 0; j < grid; j++) {
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
+            pixel.setAttribute('style', `height: ${dimensions}px; width: ${dimensions}px;`);
             pixel.addEventListener('click', () => {
-                pixel.setAttribute('style', 'background-color: black;');
+                pixel.classList.add('clicked');
             });
             row.appendChild(pixel);
         }
@@ -37,7 +41,11 @@ const btn = document.querySelector('.btn');
 btn.addEventListener('click', () => {
     temp = grid;
     grid = prompt(`Enter a number of square per row:`);
-    deleteGrid(temp);
-    createGrid(grid);
-    console.log(grid);
+    if (grid <= 100) {
+        deleteGrid(temp);
+        createGrid(grid);
+        console.log(grid);
+    }
+    else
+        grid = temp;
 });
