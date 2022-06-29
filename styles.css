@@ -1,17 +1,20 @@
 body {
-    margin: 0;
+    margin: 20px;
 }
 
 .canvas {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+}
 
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
 }
 
 .row {
     display: flex;
-    /* border: 1px solid black; */
 }
 
 .pixel {
@@ -19,4 +22,8 @@ body {
     width: 50px;
     border: 1px solid black;
     flex-shrink: 0;
+}
+
+.pixel:hover {
+    background-color: black;
 }
