@@ -11,6 +11,8 @@ body {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+    height: 832px;
+    width: 832px;
 }
 
 .row {
@@ -26,4 +28,8 @@ body {
 
 .pixel:hover {
     background-color: black;
+}
+
+.btn {
+    font-size: 16px;
 }
