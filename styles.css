@@ -1,5 +1,6 @@
 body {
     margin: 20px;
+    counter-reset: times;
 }
 
 .canvas {
@@ -27,7 +28,9 @@ body {
 }
 
 .hover {
+    counter-increment: times;
     background-color: black;
+    opacity: 0.1;
 }
 
 .btn {

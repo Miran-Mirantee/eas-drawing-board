@@ -10,7 +10,14 @@ function createGrid(grid) {
             pixel.classList.add('pixel');
             pixel.setAttribute('style', `height: ${dimensions}px; width: ${dimensions}px;`);
             pixel.addEventListener('mouseover', () => {
-                pixel.classList.add('hover');
+                if (pixel.classList.contains('hover')) {
+                    let pixelStyle = getComputedStyle(pixel);
+                    let opacity = parseFloat(pixelStyle.opacity);
+                    opacity += 0.1;
+                    pixel.style.opacity = opacity;
+                }
+                else
+                    pixel.classList.add('hover');
             });
             row.appendChild(pixel);
         }
@@ -36,6 +43,7 @@ canvas.appendChild(container);
 let grid = 16;
 createGrid(grid);
 
+//set new grid button
 const btn = document.querySelector('.btn');
 btn.addEventListener('click', () => {
     let temp = grid;
