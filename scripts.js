@@ -41,7 +41,6 @@ function deleteGrid(grid) {
 
 const canvas = document.querySelector('.canvas');
 const container = document.querySelector('.container');
-canvas.appendChild(container);
 
 //create default grid
 let grid = 16;
@@ -49,8 +48,8 @@ let randomOn = false;
 createGrid(grid, randomOn);
 
 //set new grid button
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
+const newGrid = document.querySelector('.newGrid');
+newGrid.addEventListener('click', () => {
     let temp = grid;
     grid = prompt(`Enter a number of square per row:`);
     if (grid <= 100) {
@@ -61,6 +60,13 @@ btn.addEventListener('click', () => {
         grid = temp;
 });
 
+//reset the grid
+const reset = document.querySelector('.reset');
+reset.addEventListener('click', () => {
+    deleteGrid(grid);
+    createGrid(grid, randomOn);
+});
+
 //change to random color mode button
 const random = document.querySelector('.random');
 random.addEventListener('click', () => {
@@ -69,3 +75,16 @@ random.addEventListener('click', () => {
     createGrid(grid, randomOn);
 });
 
+const rainbow = document.querySelector('.rainbow');
+rainbow.addEventListener('click', () => {
+
+});
+
+//turn off the grid
+const gridOff = document.querySelector('.gridOff');
+gridOff.addEventListener('click', () => {
+    const pixels = document.querySelectorAll('.pixel');
+    for (const pixel of pixels) {
+        pixel.style.borderColor = 'transparent';  
+    }
+});
