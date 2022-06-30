@@ -1,7 +1,8 @@
-function createGrid(grid) {
+function createGrid(grid, rainbowOn) {
     const style = getComputedStyle(container);
     let height = parseInt(style.height);
     let dimensions = height / grid - 2;
+
     for (let i = 0; i < grid; i++) {
         const row = document.createElement('div');
         row.classList.add('row');
@@ -11,13 +12,20 @@ function createGrid(grid) {
             pixel.setAttribute('style', `height: ${dimensions}px; width: ${dimensions}px;`);
             pixel.addEventListener('mouseover', () => {
                 if (pixel.classList.contains('hover')) {
-                    let pixelStyle = getComputedStyle(pixel);
+                    const pixelStyle = getComputedStyle(pixel);
                     let opacity = parseFloat(pixelStyle.opacity);
                     opacity += 0.1;
                     pixel.style.opacity = opacity;
                 }
                 else
+                {
                     pixel.classList.add('hover');
+                    if (rainbowOn) {
+                        let randomColor = Math.floor(Math.random()*16777215).toString(16);
+                        pixel.style.backgroundColor = `#${randomColor}`;
+                        pixel.style.borderColor = `#${randomColor}`;
+                    }
+                }
             });
             row.appendChild(pixel);
         }
@@ -41,7 +49,9 @@ container.classList.add('container');
 canvas.appendChild(container);
 
 let grid = 16;
-createGrid(grid);
+let rainbowOn = false;
+
+createGrid(grid, rainbowOn);
 
 //set new grid button
 const btn = document.querySelector('.btn');
@@ -50,8 +60,18 @@ btn.addEventListener('click', () => {
     grid = prompt(`Enter a number of square per row:`);
     if (grid <= 100) {
         deleteGrid(temp);
-        createGrid(grid);
+        createGrid(grid, false);
     }
     else
-        grid = temp;
+    grid = temp;
 });
+
+//change to random color mode button
+const rainbow = document.querySelector('.rainbow');
+rainbow.addEventListener('click', () => {
+    rainbowOn = !rainbowOn
+    deleteGrid(grid);
+    createGrid(grid, rainbowOn);
+    console.log(rainbowOn);
+});
+
