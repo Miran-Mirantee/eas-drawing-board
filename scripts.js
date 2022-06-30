@@ -1,4 +1,4 @@
-function createGrid(grid, rainbowOn) {
+function createGrid(grid, randomOn) {
     const style = getComputedStyle(container);
     let height = parseInt(style.height);
     let dimensions = height / grid - 2;
@@ -17,10 +17,9 @@ function createGrid(grid, rainbowOn) {
                     opacity += 0.1;
                     pixel.style.opacity = opacity;
                 }
-                else
-                {
+                else {
                     pixel.classList.add('hover');
-                    if (rainbowOn) {
+                    if (randomOn) {
                         let randomColor = Math.floor(Math.random()*16777215).toString(16);
                         pixel.style.backgroundColor = `#${randomColor}`;
                         pixel.style.borderColor = `#${randomColor}`;
@@ -40,18 +39,14 @@ function deleteGrid(grid) {
     }
 }
 
-const canvas = document.createElement('div');
-canvas.classList.add('canvas');
-document.body.appendChild(canvas);
-
-const container = document.createElement('div');
-container.classList.add('container');
+const canvas = document.querySelector('.canvas');
+const container = document.querySelector('.container');
 canvas.appendChild(container);
 
+//create default grid
 let grid = 16;
-let rainbowOn = false;
-
-createGrid(grid, rainbowOn);
+let randomOn = false;
+createGrid(grid, randomOn);
 
 //set new grid button
 const btn = document.querySelector('.btn');
@@ -60,18 +55,17 @@ btn.addEventListener('click', () => {
     grid = prompt(`Enter a number of square per row:`);
     if (grid <= 100) {
         deleteGrid(temp);
-        createGrid(grid, false);
+        createGrid(grid, randomOn);
     }
     else
-    grid = temp;
+        grid = temp;
 });
 
 //change to random color mode button
-const rainbow = document.querySelector('.rainbow');
-rainbow.addEventListener('click', () => {
-    rainbowOn = !rainbowOn
+const random = document.querySelector('.random');
+random.addEventListener('click', () => {
+    randomOn = !randomOn;
     deleteGrid(grid);
-    createGrid(grid, rainbowOn);
-    console.log(rainbowOn);
+    createGrid(grid, randomOn);
 });
 
