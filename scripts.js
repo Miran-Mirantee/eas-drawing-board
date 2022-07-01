@@ -11,6 +11,7 @@ function createGrid(grid, randomOn) {
             pixel.classList.add('pixel');
             pixel.setAttribute('style', `height: ${dimensions}px; width: ${dimensions}px;`);
             pixel.addEventListener('mouseover', () => {
+                //pixel gets darker each time the cursor passed
                 if (pixel.classList.contains('hover')) {
                     const pixelStyle = getComputedStyle(pixel);
                     let opacity = parseFloat(pixelStyle.opacity);
@@ -19,10 +20,14 @@ function createGrid(grid, randomOn) {
                 }
                 else {
                     pixel.classList.add('hover');
+                    //randomly color the pixel
                     if (randomOn) {
                         let randomColor = Math.floor(Math.random()*16777215).toString(16);
                         pixel.style.backgroundColor = `#${randomColor}`;
                         pixel.style.borderColor = `#${randomColor}`;
+                    }
+                    else if (rainbowOn) {
+                        pixel.classList.add('rainbow');
                     }
                 }
             });
@@ -45,6 +50,7 @@ const container = document.querySelector('.container');
 //create default grid
 let grid = 16;
 let randomOn = false;
+let rainbowOn = false;
 let gridOn = true;
 createGrid(grid, randomOn);
 
@@ -73,14 +79,18 @@ reset.addEventListener('click', () => {
 const random = document.querySelector('.random');
 random.addEventListener('click', () => {
     randomOn = !randomOn;
+    rainbowOn = false;
     deleteGrid(grid);
     createGrid(grid, randomOn);
 });
 
-//
+//turn on rainbow mode
 const rainbow = document.querySelector('.rainbow');
 rainbow.addEventListener('click', () => {
-
+    rainbowOn = !rainbowOn;
+    randomOn = false;
+    deleteGrid(grid);
+    createGrid(grid, randomOn);
 });
 
 //turn off the grid
