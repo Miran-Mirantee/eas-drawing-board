@@ -69,9 +69,23 @@ body {
 .title {
     font-size: 32px;
     font-family:'Courier New', Courier, monospace;
+    font-weight: 500;
     color: yellow;
+}  
+
+.sub-heading {
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    margin-left: auto;
+}
+    
+.top-panel {
     margin-bottom: auto;
-    padding: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-panel {
