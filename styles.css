@@ -46,7 +46,7 @@ body {
 
 .btn {
     font-size: 16px;
-    padding: 8px;
+    padding: 12px 10px;
     border-radius: 8px;
 }
 
@@ -89,51 +89,51 @@ body {
 @keyframes rainbow-bg{
     100%,0%{
         background-color: rgb(255,0,0);
-        border-color: rgb(255,0,0);
+        /* border-color: rgb(255,0,0); */
     }
     8%{
         background-color: rgb(255,127,0);
-        border-color: rgb(255,127,0);
+        /* border-color: rgb(255,127,0); */
     }
     16%{
         background-color: rgb(255,255,0);
-        border-color: rgb(255,255,0);
+        /* border-color: rgb(255,255,0); */
     }
     25%{
         background-color: rgb(255,255,0);
-        border-color: rgb(255,255,0);
+        /* border-color: rgb(255,255,0); */
     }
     33%{
         background-color: rgb(0,255,0);
-        border-color: rgb(0,255,0);
+        /* border-color: rgb(0,255,0); */
     }
     41%{
         background-color: rgb(0,255,127);
-        border-color: rgb(0,255,127);
+        /* border-color: rgb(0,255,127); */
     }
     50%{
         background-color: rgb(0,255,255);
-        border-color: rgb(0,255,255);
+        /* border-color: rgb(0,255,255); */
     }
     58%{
         background-color: rgb(0,127,255);
-        border-color: rgb(0,127,255);
+        /* border-color: rgb(0,127,255); */
     }
     66%{
         background-color: rgb(0,0,255);
-        border-color: rgb(0,0,255);
+        /* border-color: rgb(0,0,255); */
     }
     75%{
         background-color: rgb(127,0,255);
-        border-color: rgb(127,0,255);
+        /* border-color: rgb(127,0,255); */
     }
     83%{
         background-color: rgb(255,0,255);
-        border-color: rgb(255,0,255);
+        /* border-color: rgb(255,0,255); */
     }
     91%{
         background-color: rgb(255,0,127);
-        border-color: rgb(255,0,127);
+        /* border-color: rgb(255,0,127); */
     }
 }
 

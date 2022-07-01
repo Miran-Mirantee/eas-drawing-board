@@ -20,12 +20,15 @@ function createGrid(grid) {
                 }
                 else {
                     pixel.classList.add('hover');
+                    pixel.style.borderColor = `transparent`;
                     //randomly color the pixel
                     if (randomOn) {
                         let randomColor = Math.floor(Math.random()*16777215).toString(16);
                         pixel.style.backgroundColor = `#${randomColor}`;
-                        pixel.style.borderColor = `#${randomColor}`;
+                        // pixel.style.borderColor = `#${randomColor}`;
+                        pixel.style.borderColor = `transparent`;
                     }
+                    //rainbow mode on
                     else if (rainbowOn) {
                         pixel.classList.add('rainbow');
                     }
@@ -35,6 +38,14 @@ function createGrid(grid) {
         }
         container.appendChild(row);
     }
+    //alternative rainbow mode on
+    if (altRainbowOn) {
+        const pixels = document.querySelectorAll('.pixel');
+        for (const pixel of pixels) {
+            pixel.classList.add('rainbow');
+            pixel.style.opacity = 0;
+        }
+    }
 }
 
 function deleteGrid(grid) {
@@ -42,6 +53,8 @@ function deleteGrid(grid) {
         const row = document.querySelector('.row');
         container.removeChild(row);
     }
+    const gridOff = document.querySelector('.gridOff');
+    gridOff.textContent = `Turn off grid`;
 }
 
 const canvas = document.querySelector('.canvas');
@@ -51,6 +64,7 @@ const container = document.querySelector('.container');
 let grid = 16;
 let randomOn = false;
 let rainbowOn = false;
+let altRainbowOn = false;
 let gridOn = true;
 createGrid(grid);
 
@@ -80,14 +94,27 @@ const random = document.querySelector('.random');
 random.addEventListener('click', () => {
     randomOn = !randomOn;
     rainbowOn = false;
+    altRainbowOn = false;
     deleteGrid(grid);
     createGrid(grid);
 });
 
 //turn on rainbow mode
-const rainbow = document.querySelector('.rainbow');
+const rainbow = document.querySelector('.rainbow:not(.alternative)');
 rainbow.addEventListener('click', () => {
     rainbowOn = !rainbowOn;
+    randomOn = false;
+    altRainbowOn = false;
+    deleteGrid(grid);
+    createGrid(grid);
+});
+
+//turn on alternative rainbow mode
+const altRainbow = document.querySelector('.rainbow.alternative');
+altRainbow.addEventListener('click', () => {
+    alert(`This function is very laggy (DO NOT use this function with a grid dimensions higher than 24x24)`);
+    altRainbowOn = !altRainbowOn;
+    rainbowOn = false;
     randomOn = false;
     deleteGrid(grid);
     createGrid(grid);
