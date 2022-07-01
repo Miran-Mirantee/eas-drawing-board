@@ -45,6 +45,7 @@ const container = document.querySelector('.container');
 //create default grid
 let grid = 16;
 let randomOn = false;
+let gridOn = true;
 createGrid(grid, randomOn);
 
 //set new grid button
@@ -65,6 +66,7 @@ const reset = document.querySelector('.reset');
 reset.addEventListener('click', () => {
     deleteGrid(grid);
     createGrid(grid, randomOn);
+    gridOn = true;
 });
 
 //change to random color mode button
@@ -75,6 +77,7 @@ random.addEventListener('click', () => {
     createGrid(grid, randomOn);
 });
 
+//
 const rainbow = document.querySelector('.rainbow');
 rainbow.addEventListener('click', () => {
 
@@ -83,8 +86,16 @@ rainbow.addEventListener('click', () => {
 //turn off the grid
 const gridOff = document.querySelector('.gridOff');
 gridOff.addEventListener('click', () => {
-    const pixels = document.querySelectorAll('.pixel');
+    const pixels = document.querySelectorAll('.pixel:not(.hover)');
     for (const pixel of pixels) {
-        pixel.style.borderColor = 'transparent';  
+        if (gridOn) 
+            pixel.style.borderColor = 'transparent'; 
+        else 
+            pixel.style.borderColor = 'black'; 
     }
+    gridOn = !gridOn;
+    if (!gridOn)
+        gridOff.textContent = `Turn on grid`;
+    else
+        gridOff.textContent = `Turn off grid`;
 });
