@@ -1,4 +1,4 @@
-function createGrid(grid, randomOn) {
+function createGrid(grid) {
     const style = getComputedStyle(container);
     let height = parseInt(style.height);
     let dimensions = height / grid - 2;
@@ -52,7 +52,7 @@ let grid = 16;
 let randomOn = false;
 let rainbowOn = false;
 let gridOn = true;
-createGrid(grid, randomOn);
+createGrid(grid);
 
 //set new grid button
 const newGrid = document.querySelector('.newGrid');
@@ -61,7 +61,7 @@ newGrid.addEventListener('click', () => {
     grid = prompt(`Enter a number of square per row:`);
     if (grid <= 100) {
         deleteGrid(temp);
-        createGrid(grid, randomOn);
+        createGrid(grid);
     }
     else
         grid = temp;
@@ -71,7 +71,7 @@ newGrid.addEventListener('click', () => {
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', () => {
     deleteGrid(grid);
-    createGrid(grid, randomOn);
+    createGrid(grid);
     gridOn = true;
 });
 
@@ -81,7 +81,7 @@ random.addEventListener('click', () => {
     randomOn = !randomOn;
     rainbowOn = false;
     deleteGrid(grid);
-    createGrid(grid, randomOn);
+    createGrid(grid);
 });
 
 //turn on rainbow mode
@@ -90,7 +90,7 @@ rainbow.addEventListener('click', () => {
     rainbowOn = !rainbowOn;
     randomOn = false;
     deleteGrid(grid);
-    createGrid(grid, randomOn);
+    createGrid(grid);
 });
 
 //turn off the grid
